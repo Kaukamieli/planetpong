@@ -1,0 +1,532 @@
+[gd_scene load_steps=19 format=1]
+
+[ext_resource path="res://Node2D.gd" type="Script" id=1]
+[ext_resource path="res://planet1.png" type="Texture" id=2]
+[ext_resource path="res://planet2.png" type="Texture" id=3]
+[ext_resource path="res://ball.gd" type="Script" id=4]
+[ext_resource path="res://pallo.png" type="Texture" id=5]
+[ext_resource path="res://aitext.png" type="Texture" id=6]
+[ext_resource path="res://aitext2.png" type="Texture" id=7]
+[ext_resource path="res://Unxgala.ttf" type="DynamicFontData" id=8]
+[ext_resource path="res://splashy.png" type="Texture" id=9]
+
+[sub_resource type="CircleShape2D" id=1]
+
+custom_solver_bias = 0.0
+radius = 49.0
+
+[sub_resource type="CircleShape2D" id=2]
+
+custom_solver_bias = 0.0
+radius = 49.0
+
+[sub_resource type="CircleShape2D" id=3]
+
+custom_solver_bias = 0.0
+radius = 25.0
+
+[sub_resource type="RectangleShape2D" id=4]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="RectangleShape2D" id=5]
+
+custom_solver_bias = 0.0
+extents = Vector2( 10, 10 )
+
+[sub_resource type="DynamicFont" id=6]
+
+font/size = 66
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=7]
+
+font/size = 66
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 8 )
+
+[sub_resource type="DynamicFont" id=8]
+
+font/size = 66
+font/use_mipmaps = false
+font/use_filter = false
+font/font = ExtResource( 8 )
+
+[sub_resource type="CircleShape2D" id=9]
+
+custom_solver_bias = 0.0
+radius = 17.0
+
+[node name="Node2D" type="Node2D"]
+
+script/script = ExtResource( 1 )
+
+[node name="Player1" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 66.8073, 300 )
+input/pickable = false
+shapes/0/shape = SubResource( 1 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="Sprite" type="Sprite" parent="Player1"]
+
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player1"]
+
+shape = SubResource( 1 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Player2" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 958, 300 )
+input/pickable = false
+shapes/0/shape = SubResource( 2 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="Sprite" type="Sprite" parent="Player2"]
+
+texture = ExtResource( 3 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player2"]
+
+shape = SubResource( 2 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Ball" type="RigidBody2D" parent="."]
+
+transform/pos = Vector2( 512, 300 )
+input/pickable = false
+shapes/0/shape = SubResource( 3 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+mode = 0
+mass = 1.0
+friction = 1.0
+bounce = 1.0
+gravity_scale = 0.0
+custom_integrator = false
+continuous_cd = 0
+contacts_reported = 1
+contact_monitor = true
+sleeping = false
+can_sleep = true
+velocity/linear = Vector2( 0, 0 )
+velocity/angular = 0.0
+damp_override/linear = 0.0
+damp_override/angular = 0.0
+script/script = ExtResource( 4 )
+
+[node name="Sprite" type="Sprite" parent="Ball"]
+
+transform/scale = Vector2( 0.5, 0.5 )
+texture = ExtResource( 5 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ball"]
+
+shape = SubResource( 3 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Particles2D" type="Particles2D" parent="Ball"]
+
+config/amount = 500
+config/lifetime = 1.0
+config/emitting = false
+config/local_space = false
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 60.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 1.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 3.0
+params/final_size = 0.0
+params/hue_variation = 0.16
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/initial_size = 1.0
+randomness/final_size = 1.0
+randomness/hue_variation = 0.29
+color/color = Color( 0.512765, 0.0515747, 0.660156, 1 )
+
+[node name="TouchScreenButton" type="TouchScreenButton" parent="."]
+
+visibility/opacity = 0.16
+transform/pos = Vector2( 0, 600 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.75, 0.6 )
+normal = ExtResource( 6 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="TouchScreenButton1" type="TouchScreenButton" parent="."]
+
+visibility/opacity = 0.16
+transform/pos = Vector2( 545, 600 )
+transform/rot = 90.0
+transform/scale = Vector2( 0.75, 0.6 )
+normal = ExtResource( 7 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="Topwall" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 512, 0 )
+input/pickable = false
+shapes/0/shape = SubResource( 4 )
+shapes/0/transform = Matrix32( 50, 0, 0, 1, 0, -10 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.05
+bounce = 0.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Topwall"]
+
+transform/pos = Vector2( 0, -10 )
+transform/scale = Vector2( 50, 1 )
+shape = SubResource( 4 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Node2" type="Node2D" parent="Topwall"]
+
+transform/pos = Vector2( 0, 1 )
+transform/rot = 90.0
+
+[node name="separatorparticles" type="Particles2D" parent="Topwall/Node2"]
+
+config/amount = 32
+config/lifetime = 6.0
+params/direction = 0.0
+params/spread = 0.5
+params/linear_velocity = 80.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="separatorparticles1" type="Particles2D" parent="Topwall/Node2"]
+
+config/amount = 32
+config/lifetime = 6.0
+params/direction = 180.0
+params/spread = 0.5
+params/linear_velocity = 80.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Botwall" type="StaticBody2D" parent="."]
+
+transform/pos = Vector2( 512, 600 )
+transform/rot = 180.0
+input/pickable = false
+shapes/0/shape = SubResource( 5 )
+shapes/0/transform = Matrix32( 50, 0, 0, 1, 0, -10 )
+shapes/0/trigger = false
+collision/layers = 1
+collision/mask = 1
+constant_linear_velocity = Vector2( 0, 0 )
+constant_angular_velocity = 0.0
+friction = 0.05
+bounce = 0.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Botwall"]
+
+transform/pos = Vector2( 0, -10 )
+transform/scale = Vector2( 50, 1 )
+shape = SubResource( 5 )
+trigger = false
+_update_shape_index = 0
+
+[node name="Node3" type="Node2D" parent="Botwall"]
+
+transform/pos = Vector2( 0, 1 )
+transform/rot = -90.0
+
+[node name="separatorparticles" type="Particles2D" parent="Botwall/Node3"]
+
+config/amount = 32
+config/lifetime = 6.0
+params/direction = 0.0
+params/spread = 0.5
+params/linear_velocity = 80.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="separatorparticles1" type="Particles2D" parent="Botwall/Node3"]
+
+config/amount = 32
+config/lifetime = 6.0
+params/direction = 180.0
+params/spread = 0.5
+params/linear_velocity = 80.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+
+[node name="Score" type="Node2D" parent="."]
+
+[node name="Label" type="Label" parent="Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 500.0
+margin/top = 0.0
+margin/right = 540.0
+margin/bottom = 60.0
+custom_fonts/font = SubResource( 6 )
+text = "-"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="p1score" type="Label" parent="Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 450.0
+margin/top = 0.0
+margin/right = 490.0
+margin/bottom = 64.0
+custom_fonts/font = SubResource( 7 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="p2score" type="Label" parent="Score"]
+
+focus/ignore_mouse = true
+focus/stop_mouse = true
+size_flags/horizontal = 2
+size_flags/vertical = 0
+margin/left = 550.0
+margin/top = 0.0
+margin/right = 590.0
+margin/bottom = 60.0
+custom_fonts/font = SubResource( 8 )
+text = "0"
+percent_visible = 1.0
+lines_skipped = 0
+max_lines_visible = -1
+
+[node name="stars" type="Particles2D" parent="."]
+
+transform/pos = Vector2( 515.51, 236.652 )
+config/amount = 128
+config/lifetime = 2.0
+config/half_extents = Vector2( 500, 500 )
+params/direction = 0.0
+params/spread = 0.0
+params/linear_velocity = 0.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 2.04
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/hue_variation = 0.42
+color/color = Color( 0.829899, 0.839844, 0.521622, 1 )
+
+[node name="powerup" type="KinematicBody2D" parent="."]
+
+transform/pos = Vector2( 404.189, 300.44 )
+input/pickable = false
+shapes/0/shape = SubResource( 9 )
+shapes/0/transform = Matrix32( 1, 0, 0, 1, 0, 0 )
+shapes/0/trigger = true
+collision/layers = 1
+collision/mask = 1
+collision/margin = 0.08
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="powerup"]
+
+shape = SubResource( 9 )
+trigger = true
+_update_shape_index = 0
+
+[node name="Particles2D" type="Particles2D" parent="powerup"]
+
+config/amount = 32
+config/lifetime = 2.0
+params/direction = 0.0
+params/spread = 180.0
+params/linear_velocity = 20.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 2.17
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+randomness/hue_variation = 0.92
+color/color = Color( 1, 0.445312, 0.445312, 1 )
+
+[node name="Splashscreen" type="Node2D" parent="."]
+
+process/pause_mode = 2
+
+[node name="Splashscreenbutton" type="TouchScreenButton" parent="Splashscreen"]
+
+transform/pos = Vector2( 1.08234, -37.2795 )
+transform/scale = Vector2( 1.27701, 1.27701 )
+normal = ExtResource( 9 )
+pressed = null
+bitmask = null
+passby_press = false
+action = ""
+visibility_mode = 0
+
+[node name="Node2D" type="Node2D" parent="."]
+
+transform/pos = Vector2( 512, 300 )
+__meta__ = { "_edit_lock_":true }
+
+[node name="separatorparticles" type="Particles2D" parent="Node2D"]
+
+config/amount = 15
+config/lifetime = 3.0
+params/direction = 0.0
+params/spread = 1.0
+params/linear_velocity = 80.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+__meta__ = { "_edit_lock_":true }
+
+[node name="separatorparticles1" type="Particles2D" parent="Node2D"]
+
+config/amount = 15
+config/lifetime = 3.0
+params/direction = 180.0
+params/spread = 1.0
+params/linear_velocity = 80.0
+params/spin_velocity = 0.0
+params/orbit_velocity = 0.0
+params/gravity_direction = 0.0
+params/gravity_strength = 0.0
+params/radial_accel = 0.0
+params/tangential_accel = 0.0
+params/damping = 0.0
+params/initial_angle = 0.0
+params/initial_size = 1.0
+params/final_size = 1.0
+params/hue_variation = 0.0
+params/anim_speed_scale = 1.0
+params/anim_initial_pos = 0.0
+__meta__ = { "_edit_lock_":true }
+
+[connection signal="body_enter" from="Ball" to="." method="_on_Ball_body_enter"]
+
+[connection signal="pressed" from="TouchScreenButton" to="." method="_on_TouchScreenButton_pressed"]
+
+[connection signal="released" from="TouchScreenButton" to="." method="_on_TouchScreenButton_released"]
+
+[connection signal="pressed" from="TouchScreenButton1" to="." method="_on_TouchScreenButton1_pressed"]
+
+[connection signal="released" from="TouchScreenButton1" to="." method="_on_TouchScreenButton1_released"]
+
+[connection signal="pressed" from="Splashscreen/Splashscreenbutton" to="." method="_on_Splashscreenbutton_pressed"]
+
+
